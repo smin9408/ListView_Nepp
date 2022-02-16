@@ -1,13 +1,16 @@
 package com.neppplus.listview_nepp
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.neppplus.listview_nepp.adapters.StudentAdapter
 import com.neppplus.listview_nepp.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+// comment1
 
     lateinit var mAdapter: StudentAdapter
     val mStudentList = ArrayList<StudentData>()
@@ -42,9 +45,20 @@ class MainActivity : AppCompatActivity() {
 
             val longClickedStudent = mStudentList[position]
 
-            mStudentList.remove( longClickedStudent )
+            AlertDialog.Builder(this)
+                .setTitle("학생 삭제")
+                .setMessage("정말 ${longClickedStudent.name} 학생을 삭제하시 겠습니까?")
+                .setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
 
-            mAdapter.notifyDataSetChanged()
+                    mStudentList.remove(longClickedStudent)
+
+                    mAdapter.notifyDataSetChanged()
+
+                })
+                .setNegativeButton("취소", null)
+                .show()
+
+
 
             return@setOnItemLongClickListener true
         }
