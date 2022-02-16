@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+//    comment2
     lateinit var mAdapter: StudentAdapter
     val mStudentList = ArrayList<StudentData>()
 
