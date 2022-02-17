@@ -33,8 +33,8 @@ class StudentAdapter(
         txtStudentName.text = data.name
         txtStudentAdress.text = data.address
 
-        val age = 2022 - data.birthYear +1
-        txtStudentAge.text = "(${age}세)"
+
+        txtStudentAge.text = "(${data.getKoreanAge(2022)}세)"
 
         return row
     }
